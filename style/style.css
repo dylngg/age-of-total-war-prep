@@ -1,0 +1,121 @@
+*, html {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Header */
+.header {
+    width: 100%;
+    height: 75px;
+    margin: 0;
+    padding-bottom: 10px;
+}
+.header h2 {
+    line-height: 75px;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+
+/* Main */
+.main {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 50px;
+}
+@media (max-width: 700px) {
+    .main {
+        box-sizing: border-box;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
+.generic-button {
+    height: 45px;
+    box-sizing: border-box;
+    padding: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 0;
+    display: inline-block;
+    font-weight: 400;
+    border: none;
+    border-radius: 5px;
+    background-color: #84241f;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Playfair Display', serif;
+    color: white;
+}
+.generic-button:hover {
+    cursor: pointer;
+    -moz-box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+    -webkit-box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+}
+.generic-button:active  {
+    background-color: #661c17;
+    cursor: pointer;
+
+}
+
+/* Id Content */
+.id-container {
+    box-sizing: border-box;
+}
+.id-content-container {
+    margin: 0;
+    padding: 0;
+    float: left;
+    margin-bottom: 15px;
+}
+.id-content {
+    display: inline-block;
+}
+#id-id {
+    font-weight: 400;
+}
+
+/* Id Answers */
+.id-answer-container {
+    margin-bottom: 15px;
+}
+#id-answer-textarea {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    height: 200px;
+    resize: none;
+    font-family: 'Lato', sans-serif;
+    border-radius: 5px;
+    border: 1px solid #8e8e8e;
+    font-size: 16px;
+}
+.id-real-answer-container {
+    display: none;
+}
+.id-answer-header {
+    line-height: 36px;
+    display: inline;
+    padding-right: 15px;
+}
+.id-answer-button {
+    margin: 0;
+    margin-top: -7.5px;
+    float: right;
+}
+.id-answer-container span {
+    font-family: 'Lato', sans-serif;
+}
+
+/* New Id */
+hr {
+    margin: 0 auto;
+    border: .5px solid #8e8e8e;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
