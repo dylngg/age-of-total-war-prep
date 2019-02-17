@@ -31,7 +31,7 @@ function loadAnswer(answer, index) {
 }
 
 var delegate = {
-    showanswer: function() {
+    toggleAnswer: function() {
         showAnswer = !showAnswer;
         console.log("Show Relationships");
         var answersToShow = (showRelationships == true) ? 3 : 1;
