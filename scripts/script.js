@@ -1,10 +1,11 @@
 var showAnswer = false;
+var duplicates = true;
+var prevIds = [];
 var relationships = [];
 var showRelationships = false;
 function addRelationship(relationshipId) {
     if (relationships.length == 3) relationships.shift();
     relationships.push(relationshipId);
-    console.log(relationships);
 }
 
 function containsElement(obj, list) {
@@ -18,6 +19,20 @@ function containsElement(obj, list) {
 
 function randomProperty(obj) {
     var keys = Object.keys(obj)
+    var seenItems = [];
+    var item;
+    while (seenItems.length < Object.keys(histData).length) {
+        item = keys[keys.length * Math.random() << 0];
+        seenItems.push(item);
+        if (duplicates == false || !containsElement(item, prevIds)) {
+            prevIds.push(item);
+            return obj[item];
+        }
+    }
+    console.log("Resetting array of seen elements");
+    // Reset array
+    prevIds = [];
+    relationships = [];
     return obj[keys[keys.length * Math.random() << 0]];
 };
 
@@ -33,7 +48,6 @@ function loadAnswer(answer, index) {
 var delegate = {
     toggleAnswer: function() {
         showAnswer = !showAnswer;
-        console.log("Show Relationships");
         var answersToShow = (showRelationships == true) ? 3 : 1;
         for (var index = 1; index < answersToShow + 1; index++) {
             var answerElement = document.getElementById("answer" + index);
@@ -52,14 +66,12 @@ var delegate = {
         var histEvent = randomProperty(histData);
         while(containsElement(histEvent['Id'], relationships) == true) {
             histEvent = randomProperty(histData);
-            console.log(histEvent['Id'], relationships);
         }
         addRelationship(histEvent['Id']);
         loadAnswer(histEvent, 1);
         id.innerHTML = histEvent['Id'];
     },
     loadPastAnswers: function() {
-        console.log("Loading Past Answers");
         var id = document.getElementById("id-id");
         var histEvent = relationships[0];
         var idContent = histEvent;
@@ -68,7 +80,6 @@ var delegate = {
         for (var i = 1; i < relationships.length; i++) {
             histEvent = relationships[i];
             idContent += ", " + histEvent;
-            console.log(i + 1);
             loadAnswer(histData[histEvent], i + 1);
         }
         id.innerHTML = idContent;
@@ -76,6 +87,13 @@ var delegate = {
         var textarea = document.getElementById("id-answer-textarea");
         textarea.placeholder = "Enter the relationships between the items";
         showRelationships = true;
+    },
+    toggleDuplicates: function() {
+        var checkboxState = document.getElementById("duplicates").checked;
+        if (duplicates == false && checkboxState == true) {
+            prevIds = [];
+        }
+        duplicates = checkboxState;
     }
 };
 
