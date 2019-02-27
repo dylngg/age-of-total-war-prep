@@ -58,6 +58,7 @@ var delegate = {
         answerToggle.innerHTML = (showAnswer == true) ? "Hide Answer" : "Show Answer";
     },
     loadNewAnswer: function() {
+        showRelationships = false;
         var id = document.getElementById("id-id");
         var textarea = document.getElementById("id-answer-textarea");
         textarea.placeholder = "Enter the who, what, when, where and why the terms matter";
