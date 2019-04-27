@@ -37,11 +37,11 @@ function randomProperty(obj) {
 };
 
 function loadAnswer(answer, index) {
-    var info = ["who", "what", "when", "where", "why", "details", "source"];
+    var info = ["What", "Source"];
     for (var i = 0; i < info.length; i++) {
         var specifier = info[i];
-        var element = document.getElementById(specifier + index);
-        element.innerHTML = fillNullData(answer[specifier.charAt(0).toUpperCase() + specifier.slice(1)]);
+        var element = document.getElementById(specifier.toLowerCase() + index);
+        element.innerHTML = fillNullData(answer[specifier]);
     }
 }
 
@@ -65,12 +65,12 @@ var delegate = {
         textarea.focus();
 
         var histEvent = randomProperty(histData);
-        while(containsElement(histEvent['Id'], relationships) == true) {
+        while(containsElement(histEvent["Id"], relationships) == true) {
             histEvent = randomProperty(histData);
         }
-        addRelationship(histEvent['Id']);
+        addRelationship(histEvent["Id"]);
         loadAnswer(histEvent, 1);
-        id.innerHTML = histEvent['Id'];
+        id.innerHTML = histEvent["Id"];
     },
     loadPastAnswers: function() {
         var id = document.getElementById("id-id");

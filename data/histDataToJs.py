@@ -8,12 +8,7 @@ def main(args):
     csvfile = open(args[1], "r")
     fieldnames = (
         "Id",
-        "Who",
         "What",
-        "When",
-        "Where",
-        "Why",
-        "Details",
         "Source",
     )
     reader = csv.DictReader(csvfile, fieldnames)
